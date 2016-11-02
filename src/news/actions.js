@@ -23,7 +23,7 @@ export function getMoreNews() {
                 dispatch(arrivalNewNews(json.response.items));
             })
             .catch(function (error) {
-                console.log(error)
+                console.error(error)
             })
     };
 }
