@@ -11,13 +11,13 @@ class News extends React.Component {
         return (
             <Card style={{flex: '1 1 250px', margin: '20px'}}>
 
-                <CardTitle title={this.props.head} subtitle={this.props.head}/>
+                <CardMedia>
+                    <img src={this.props.media} role="presentation" alt=""/>
+                </CardMedia>
+                <CardTitle title={this.props.title} subtitle={this.props.title}/>
                 <CardText>
                     {this.props.text}
                 </CardText>
-                <CardMedia>
-                    <img src={this.props.img} role="presentation" alt=""/>
-                </CardMedia>
 
             </Card>
         )
@@ -28,13 +28,15 @@ class NewsList extends React.Component {
 
     render() {
 
-        let newsList = this.props.list.map((x, index) => ( <News key={index} head={x.head} text={x.text} img={x.img}/> ));
+        let newsList = this.props.list.map(
+            (x, index) => (
+                <News key={x.id} title={'Новость группы Зенит'} text={x.text} media={x.attachments && x.attachments[0].photo ? x.attachments[0].photo.photo_604 : ''} /> )
+        );
         let loadMore = this.props.actions.getMoreNews;
         let progress = this.props.progress;
 
-        let button = <RaisedButton onClick={loadMore} label={"Больше новостей"} primary={true} icon={<FileCloudDownload />} style={{margin: 12}}/>
-        let circle = <CircularProgress style={{margin: 20}} size={60} thickness={7} />;
-
+        let button = <RaisedButton onClick={loadMore} label={"Больше новостей"} primary={true} icon={<FileCloudDownload />} style={{margin: 12}}/>;
+        let circle = <CircularProgress style={{margin: 20}} size={60} thickness={3} />;
 
         return (
             <div>

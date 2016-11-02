@@ -12,7 +12,7 @@ injectTapEventPlugin();
 import configureStore from './configureStore'
 import {initialState} from './initialState'
 
-let store = configureStore(initialState);
+export let store = configureStore(initialState);
 
 // Components
 import Homepage from './components/homepage'
