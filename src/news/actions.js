@@ -12,7 +12,6 @@ export function arrivalNewNews(payload) {
 // Действие: Загрузить новые новости
 export function getMoreNews() {
 
-    console.log("Action called: new news");
     return function (dispatch) {
         dispatch({type: types.GETTING_NEWS_BEGIN});
 
