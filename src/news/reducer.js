@@ -7,7 +7,7 @@ var newsReducer = function (state = {}, action) {
             return Object.assign({}, state, {progress: true});
 
         case types.GETTING_NEWS_END:
-            return Object.assign({}, state, {list: state.list + action.payload, progress: false});
+            return Object.assign({}, state, {list: state.list.concat(action.payload), progress: false});
 
         default:
             return state;

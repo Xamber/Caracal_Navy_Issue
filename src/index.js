@@ -3,63 +3,53 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import {Router, Route, IndexRoute, Link, browserHistory} from 'react-router'
+
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-
-
 injectTapEventPlugin();
 
 // Store section
 import configureStore from './configureStore'
-
-const initialState = {
-    news: {
-        list: [
-            {
-                id: 1,
-                head: 'News 1',
-                img: 'http://www.mountainguides.com/photos/everest-south/upper-mountain-shadow_jm.jpg',
-                text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis deleniti minus nesciunt nihil praesentium. Accusamus animi assumenda beatae dolorum eius ipsa neque quidem similique? Aliquam doloribus modi quas. Accusantium commodi dignissimos, eius hic id perferendis quas saepe sapiente suscipit veniam.",
-            },
-            {
-                id: 2,
-                head: 'News 2',
-                img: 'http://www.mountainguides.com/photos/everest-south/upper-mountain-shadow_jm.jpg',
-                text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis deleniti minus nesciunt nihil praesentium. Accusamus animi assumenda beatae dolorum eius ipsa neque quidem similique? Aliquam doloribus modi quas. Accusantium commodi dignissimos, eius hic id perferendis quas saepe sapiente suscipit veniam.",
-            },
-            {
-                id: 3,
-                head: 'News 3',
-                img: 'http://www.mountainguides.com/photos/everest-south/upper-mountain-shadow_jm.jpg',
-                text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis deleniti minus nesciunt nihil praesentium. Accusamus animi assumenda beatae dolorum eius ipsa neque quidem similique? Aliquam doloribus modi quas. Accusantium commodi dignissimos, eius hic id perferendis quas saepe sapiente suscipit veniam.",
-            },
-        ],
-        progress: false
-    }
-};
+import {initialState} from './initialState'
 
 let store = configureStore(initialState);
 
 // Components
-import Head from './components/head'
 import Homepage from './components/homepage'
 import About from './components/about'
+import Container from './components/container'
 import NewsApp from './news/container'
+import {Tabs, Tab} from 'material-ui/Tabs';
+
+import background from './media/bg.jpg';
 
 // Main Class
 class Main extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            value: "Homepage",
+        };
+    }
+
+    handleChange = (value) => {
+        this.setState({
+          value: value,
+        });
+      };
+
     render() {
-        return <div className='application'>
-                    <Head />
-                    <nav>
-                        <ul>
-                            <li><Link to='/' onlyActiveOnIndex={true} activeClassName='active'>Homepage</Link></li>
-                            <li><Link to='/news' activeClassName='active'>News</Link></li>
-                            <li><Link to='/about' activeClassName='active'>About</Link></li>
-                        </ul>
-                    </nav>
+
+        return <Container>
+                    <img style={{display: 'block', width: '100%'}} src={background} alt=""/>
+                    <Tabs onChange={this.handleChange} value={this.state.value} >
+                       <Tab value={"Homepage"} label="Главная страница" containerElement={<Link to='/' onlyActiveOnIndex={true} activeClassName='active'/>} />
+                       <Tab value={"News"} label="Новости" containerElement={<Link to='/news' activeClassName='active'/>}/>
+                       <Tab value={"About"} label="О Компании" containerElement={<Link to='/about' activeClassName='active'/>} />
+                    </Tabs>
                     {this.props.children}
-                </div>;
+                </Container>;
     }
 }
 
