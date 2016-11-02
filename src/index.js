@@ -3,6 +3,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import {Router, Route, IndexRoute, Link, browserHistory} from 'react-router'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+
+
+injectTapEventPlugin();
 
 // Store section
 import configureStore from './configureStore'
@@ -61,15 +66,17 @@ class Main extends React.Component {
 // Init
 window.onload = function () {
 
-    ReactDOM.render(<Provider store={store}>
-                        <Router history={browserHistory}>
-                            <Route path='/' component={Main}>
-                                <IndexRoute component={Homepage}/>
-                                <Route path='news' component={NewsApp}/>
-                                <Route path='about' component={About}/>
-                            </Route>
-                        </Router>
-                    </Provider>,
+    ReactDOM.render(<MuiThemeProvider>
+                        <Provider store={store}>
+                            <Router history={browserHistory}>
+                                <Route path='/' component={Main}>
+                                    <IndexRoute component={Homepage}/>
+                                    <Route path='news' component={NewsApp}/>
+                                    <Route path='about' component={About}/>
+                                </Route>
+                            </Router>
+                        </Provider>
+                    </MuiThemeProvider>,
         document.getElementById('root')
     );
 };
