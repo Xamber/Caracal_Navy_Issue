@@ -4,18 +4,16 @@ class News extends React.Component {
 
     render() {
 
-        let self = this;
-
         return (
             <div className="news__item">
                 <div className="news__img">
-                    <img src={self.props.img} role="presentation" alt=""/>
+                    <img src={this.props.img} role="presentation" alt=""/>
                 </div>
                 <div className="news__head">
-                    {self.props.head}
+                    {this.props.head}
                 </div>
                 <div className="news__text">
-                    {self.props.text}
+                    {this.props.text}
                 </div>
             </div>
         )
