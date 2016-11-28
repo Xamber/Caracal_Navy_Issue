@@ -3,9 +3,7 @@ import React from 'react';
 
 class Head extends React.Component {
     render() {
-        return <div className="hello">
-                    Hello message
-               </div>;
+        return <div className="alert alert-info" role="alert">Привет! Я тестовое приложение</div>;
     }
 }
 

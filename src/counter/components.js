@@ -38,23 +38,27 @@ class Counter extends React.Component {
             <div className="counter">
 
                 <h1>{counter} {progress}</h1>
-                <button onClick={this.inc}>Увеличить счетчик на {this.state.value} </button>
-                <button onClick={this.dec}>Уменьшить счетчик на {this.state.value} </button>
-                <button onClick={this.reset}>Обнулить счетчик</button>
 
-                <input type="number"
+                <div className="input-group">
+                    <div className="input-group-btn">
+                        <button className="btn btn-success" onClick={this.inc}>Увеличить счетчик на {this.state.value} </button>
+                        <button className="btn btn-success" onClick={this.dec}>Уменьшить счетчик на {this.state.value} </button>
+                        <button className="btn btn-warning" onClick={this.reset}>Обнулить счетчик</button>
+                    </div>
+                    <input type="number"
+                       className="form-control"
                        value={this.state.value}
                        onChange={this.onChangeHandler}
                        placeholder='введите значение'
-                />
+                    />
+                </div>
 
             </div>
         );
 
         let progressTemplate = (
-            <div>Reseting in progress...</div>
+            <div><i className="fa fa-spinner fa-spin fa-3x fa-fw"> </i> </div>
         );
-
 
         return ( progress ? progressTemplate : mainTempalte );
     }

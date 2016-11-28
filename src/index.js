@@ -23,14 +23,14 @@ import {CounterApp} from './counter/container'
 class Main extends React.Component {
     render() {
         return <div className='application'>
-                    <Head />
-                    <nav>
-                        <ul>
+                    <nav className="navbar navbar-inverse">
+                        <ul className="nav navbar-nav">
                             <li><Link to='/' onlyActiveOnIndex={true} activeClassName='active'>Homepage</Link></li>
                             <li><Link to='/news' activeClassName='active'>News</Link></li>
                             <li><Link to='/about' activeClassName='active'>About</Link></li>
                         </ul>
                     </nav>
+                    <Head />
                     {this.props.children}
                 </div>;
     }
