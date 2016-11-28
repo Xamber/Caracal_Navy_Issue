@@ -2,9 +2,9 @@ import {createStore, applyMiddleware, combineReducers} from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import createLogger from 'redux-logger'
 
-import news from './news/reducer'
+import {counterReducer} from './counter/reducer'
 
-let rootReducer = combineReducers({ news: news, });
+let rootReducer = combineReducers( {counter: counterReducer,} );
 
 const middlewares = applyMiddleware(thunkMiddleware, createLogger());
 

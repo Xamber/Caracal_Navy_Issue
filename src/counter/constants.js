@@ -1,0 +1,5 @@
+export const RESET_COUNTER = 'RESET_COUNTER';
+export const COUNTER_RESETED = 'COUNTER_RESETED';
+
+export const INC_COUNTER = 'INC_COUNTER';
+export const DEC_COUNTER = 'DEC_COUNTER';

@@ -8,29 +8,7 @@ import {Router, Route, IndexRoute, Link, browserHistory} from 'react-router'
 import configureStore from './configureStore'
 
 const initialState = {
-    news: {
-        list: [
-            {
-                id: 1,
-                head: 'News 1',
-                img: 'http://www.mountainguides.com/photos/everest-south/upper-mountain-shadow_jm.jpg',
-                text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis deleniti minus nesciunt nihil praesentium. Accusamus animi assumenda beatae dolorum eius ipsa neque quidem similique? Aliquam doloribus modi quas. Accusantium commodi dignissimos, eius hic id perferendis quas saepe sapiente suscipit veniam.",
-            },
-            {
-                id: 2,
-                head: 'News 2',
-                img: 'http://www.mountainguides.com/photos/everest-south/upper-mountain-shadow_jm.jpg',
-                text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis deleniti minus nesciunt nihil praesentium. Accusamus animi assumenda beatae dolorum eius ipsa neque quidem similique? Aliquam doloribus modi quas. Accusantium commodi dignissimos, eius hic id perferendis quas saepe sapiente suscipit veniam.",
-            },
-            {
-                id: 3,
-                head: 'News 3',
-                img: 'http://www.mountainguides.com/photos/everest-south/upper-mountain-shadow_jm.jpg',
-                text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis deleniti minus nesciunt nihil praesentium. Accusamus animi assumenda beatae dolorum eius ipsa neque quidem similique? Aliquam doloribus modi quas. Accusantium commodi dignissimos, eius hic id perferendis quas saepe sapiente suscipit veniam.",
-            },
-        ],
-        progress: false
-    }
+    counter: {counter: 3, progress: false},
 };
 
 let store = configureStore(initialState);
@@ -39,7 +17,7 @@ let store = configureStore(initialState);
 import Head from './components/head'
 import Homepage from './components/homepage'
 import About from './components/about'
-import NewsApp from './news/container'
+import {CounterApp} from './counter/container'
 
 // Main Class
 class Main extends React.Component {
@@ -65,7 +43,7 @@ window.onload = function () {
                         <Router history={browserHistory}>
                             <Route path='/' component={Main}>
                                 <IndexRoute component={Homepage}/>
-                                <Route path='news' component={NewsApp}/>
+                                <Route path='news' component={CounterApp}/>
                                 <Route path='about' component={About}/>
                             </Route>
                         </Router>
